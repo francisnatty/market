@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:market/API/getData.dart';
+import 'package:market/screens/add_money.dart';
 import 'package:market/screens/home.dart';
+import 'package:market/screens/pinScreen/pin__screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
+import '../API/world_time_api.dart';
+import '../PageView/page_view.dart';
+import '../UserProfile/user_profile.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -14,15 +21,10 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
   static const List<Widget> _widgetOptions = [
     HomeScreen(),
-    Center(
-      child: Text('walllet'),
-    ),
-    Center(
-      child: Text('Profile'),
-    ),
-    Center(
-      child: Text('Profile'),
-    ),
+    UserProfile(),
+    //PageViewer(),
+    PinScreen(),
+    WorldTimeApi(),
   ];
 
   @override

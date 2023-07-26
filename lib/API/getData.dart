@@ -17,16 +17,19 @@ class _GetDataState extends State<GetData> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //fetchData();
+    fetchData();
   }
 
+//getting data from coinmarketcapApi
   Future<void> fetchData() async {
-    final String apikey = '';
-    final String apiUrl = '';
+    // final String apikey = '';
+    final String apiUrl =
+        'https://pro-api.coinmarketcap.com/v1/cryptocurrency/category';
 
     try {
-      final response =
-          await http.get(Uri.parse(apiUrl), headers: {'Authorization': ''});
+      final response = await http.get(Uri.parse(apiUrl), headers: {
+        'X-CMC_PRO_API_KEY': '1c03e11a-f2e8-4927-b4f5-29a02d6681c9'
+      });
       if (response.statusCode == 200) {
         print('SUCESSFUL');
         print('Data:${response.body}');
@@ -40,9 +43,15 @@ class _GetDataState extends State<GetData> {
   }
 
 // final  const  X-CMC_PRO_API_KEY='';
+// 1c03e11a-f2e8-4927-b4f5-29a02d6681c9
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: SafeArea(
+          child: Container(
+        child: Column(children: [Text('trying to get data')]),
+      )),
+    );
   }
 }
