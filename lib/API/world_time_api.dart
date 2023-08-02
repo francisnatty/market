@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:loading_indicator/loading_indicator.dart';
 
 class WorldTimeApi extends StatefulWidget {
   const WorldTimeApi({super.key});
@@ -41,11 +42,24 @@ class _WorldTimeApiState extends State<WorldTimeApi> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               //  print('loading data');
               return Center(
-                child: CircularProgressIndicator(color: Colors.blue),
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: LoadingIndicator(
+                    colors: [
+                      Colors.blue,
+                      Colors.purple,
+                      Colors.orange,
+                      Colors.green
+                    ],
+                    strokeWidth: 10.0,
+                    indicatorType: Indicator.ballZigZag,
+                  ),
+                ),
               );
             } else if (snapshot.hasError) {
               return Center(
-                child: Text('An Error Occurred'),
+                child: Text('No internet connection'),
               );
             } else {
               final data = snapshot.data;

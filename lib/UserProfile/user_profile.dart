@@ -30,6 +30,7 @@ class _UserProfileState extends State<UserProfile> {
                   left: 50,
                   right: 50,
                   child: Container(
+                    // width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)),
@@ -49,7 +50,11 @@ class _UserProfileState extends State<UserProfile> {
                                   height: 50,
                                 ),
                               ),
+                              SizedBox(
+                                width: 16,
+                              ),
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Okpe Francis Nathaniel',
@@ -84,6 +89,13 @@ class _UserProfileState extends State<UserProfile> {
                     child: Column(
                       children: [
                         profileListile(
+                            'Transaction History',
+                            'Keep track of your transactions',
+                            Icon(Iconsax.transaction_minus)),
+                        const Divider(
+                          thickness: 1,
+                        ),
+                        profileListile(
                           'Security',
                           'Payment Pin',
                           Icon(Iconsax.security),
@@ -117,7 +129,7 @@ class _UserProfileState extends State<UserProfile> {
                     child: Column(
                       children: [
                         profileListile(
-                          ' Contact us',
+                          'Contact us',
                           'Payment Pin',
                           Icon(Iconsax.call),
                         ),
@@ -126,7 +138,7 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         profileListile(
                           'Logout',
-                          'Payment Pin',
+                          '',
                           Icon(Iconsax.logout),
                         ),
                       ],
