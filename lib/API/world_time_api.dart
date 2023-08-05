@@ -34,7 +34,7 @@ class _WorldTimeApiState extends State<WorldTimeApi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('World Time api'),
+        title: Text('Getting data from an Api'),
       ),
       body: FutureBuilder(
           future: getData(),

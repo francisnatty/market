@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/UserProfile/edit.dart';
 import 'package:market/screens/home.dart';
 import 'package:market/screens/my_nav_bar.dart';
 
@@ -23,7 +24,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CustomBottomNav(),
+      //  home: const CustomBottomNav(),
+      initialRoute: 'navbar',
+
+      routes: {
+        'navbar': (context) => CustomBottomNav(),
+        'edit': (context) => EditScreen(),
+      },
     );
   }
 }

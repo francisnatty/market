@@ -7,9 +7,13 @@ import 'package:market/screens/home.dart';
 import 'package:market/screens/pinScreen/pin__screen.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../API/world_time_api.dart';
-import '../PageView/page_view.dart';
+import '../UserProfile/edit.dart';
+import '../UserProfile/home_screen.dart';
+import '../UserProfile/picker.dart';
 import '../UserProfile/profile.dart';
+
+import '../UserProfile/profile_three.dart';
+import '../UserProfile/profile_twwo.dart';
 import '../UserProfile/user_profile.dart';
 
 class CustomBottomNav extends StatefulWidget {
@@ -22,12 +26,15 @@ class CustomBottomNav extends StatefulWidget {
 class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
   static const List<Widget> _widgetOptions = [
-    HomeScreen(),
+    Home(),
+    Profile(),
+    ProfileThree(),
+    //  EditScreen(),
     UserProfile(),
-    //PageViewer(),
-    //Profile(),
-    MyPageView(),
-    WorldTimeApi(),
+
+    // Center(
+    //   child: Text('Senior mobile app developer'),
+    // ),
   ];
 
   @override

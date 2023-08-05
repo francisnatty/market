@@ -41,6 +41,9 @@ dependencies:
   shared_preferences: ^2.2.0
   loading_indicator: ^3.1.1
   snapping_page_scroll: ^3.0.0
+  image_picker: ^1.0.1
+  file_picker: ^5.3.3
+  fluttertoast: ^8.2.2
   
 
 dev_dependencies:
@@ -69,6 +72,9 @@ flutter:
   assets:
     - assets/notificationbell.jpg
     - assets/dark.jpeg
+    - assets/nature.jpeg
+    - assets/girl.jpg
+    - assets/girltwo.jpg
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -86,6 +92,10 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Medium.ttf
+     
+    - family: Victor
+      fonts:
+          - asset: assets/fonts/VictorMono-Bold.ttf
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
     # - family: Trajan Pro
