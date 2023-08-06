@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:market/API/getData.dart';
@@ -25,6 +26,13 @@ class CustomBottomNav extends StatefulWidget {
 
 class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
+  int _bottomNavIndex = 0;
+  List<IconData> iconList = [
+    (Icons.abc),
+    Icons.home,
+    Icons.abc_rounded,
+    Icons.abc_outlined,
+  ];
   static const List<Widget> _widgetOptions = [
     Home(),
     Profile(),
