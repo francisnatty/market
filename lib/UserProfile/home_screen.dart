@@ -154,25 +154,21 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         child: Row(children: <Widget>[
           Expanded(
             child: Material(
-              //  elevation: 5.0,
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: TextField(
-                cursorColor: Colors.pink,
-                decoration: const InputDecoration(
-                    hintText: 'People,Places and Businesses',
-                    hintStyle: TextStyle(color: Colors.black38, fontSize: 16),
-                    prefixIcon: Material(
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                      child: Icon(Iconsax.search_favorite),
-                    ),
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-              ),
-            ),
+                //  elevation: 5.0,
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Friends'),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
+                      Icon(Iconsax.arrow_down_1)
+                    ],
+                  ),
+                )),
           ),
           SizedBox(
             width: 15,
@@ -289,8 +285,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // bottomSheet();
-                        showTopModalSheet(context, names());
+                        bottomSheet();
+                        //showTopModalSheet(context, names());
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -564,38 +560,44 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  PersistentBottomSheetController<void> bottomSheet2(
-      BuildContext context, TabController controller) {
-    return showBottomSheet<void>(
+  bottomSheet2(BuildContext context, TabController controller) {
+    return showModalBottomSheet<void>(
         backgroundColor: Colors.white,
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext context) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.width,
-            child: Column(children: [
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            //  mainAxisSize: MainAxisSize.min,
+            children: [
               SizedBox(
-                height: 10,
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width,
+                child: Column(children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'QUICK FILTERS',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  tabContainer(controller),
+                  Expanded(
+                      child: TabBarView(
+                    controller: controller,
+                    children: [
+                      friendsTab(),
+                      tabTwo(),
+                      tabThree(),
+                      tabFour(),
+                    ],
+                  ))
+                ]),
               ),
-              Text(
-                'QUICK FILTERS',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              tabContainer(controller),
-              Expanded(
-                  child: TabBarView(
-                controller: controller,
-                children: [
-                  friendsTab(),
-                  tabTwo(),
-                  tabThree(),
-                  tabFour(),
-                ],
-              ))
-            ]),
+            ],
           );
         });
   }
