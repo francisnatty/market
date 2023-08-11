@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:top_modal_sheet/top_modal_sheet.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,12 +13,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
+  bool isTopSheetOpen = false;
   List<dynamic> myPosts = [
     {
       'name': 'Monica',
       'username': '@monica247',
       'title': 'Hi guys,am monica i would love to know you more',
       'image': 'assets/girl.jpg'
+    },
+    {
+      'name': 'Philip',
+      'username': '@philip34',
+      'title': 'cute ladies,like my picture..hahaha',
+      'image': 'assets/dark.jpeg'
     },
     {
       'name': 'Philip',
@@ -74,6 +82,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       'comments': 'Pls Can we be Friends',
     }
   ];
+
+  void toggleTopSheet() {
+    setState(() {
+      isTopSheetOpen = !isTopSheetOpen;
+    });
+  }
+
   //Icon icon = Icon(Iconsax.heart);
   IconData icon = Iconsax.heart;
   IconData iconLiked = Iconsax.heart5;
@@ -89,36 +104,87 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               child: Stack(children: <Widget>[
                 Column(
                   children: [
-                    topBar(context, tabController),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(
-                      child: SizedBox(
-                          height: 100,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: myPosts.length,
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    isTopSheetOpen
+                        ? SizedBox.shrink()
+                        : topBar(context, tabController),
+                    isTopSheetOpen
+                        ? Container(
+                            //  height: MediaQuery.of(context).size.height / 2,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              color: Colors.grey.withOpacity(0.1),
+                            ),
+                            child: topSheetColumn(context, tabController))
+                        : CarouselSlider.builder(
+                            itemCount: myPosts.length,
+                            itemBuilder: (context, index, realIndex) {
+                              return Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 3, 0, 0),
+                                child: SizedBox(
+                                  height: 50,
+                                  width: MediaQuery.of(context).size.width,
                                   child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width - 20,
                                     height: 50,
-                                    //decoration: Image(image: DecorationImage()),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image.asset(
-                                        myPosts[index]['image'],
-                                        fit: BoxFit.cover,
-                                      ),
+                                    padding: EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.fromBorderSide(
+                                            BorderSide(color: Colors.grey))),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(
+                                              'A journey of love',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 21),
+                                            ),
+                                            Text(
+                                              'Starts with a simple',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 21),
+                                            ),
+                                            Text(
+                                              'Swipe away',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 21),
+                                            ),
+                                          ],
+                                        ),
+                                        ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20)),
+                                            child: Image.asset(
+                                              'assets/girl.jpg',
+                                              // height: 50,
+                                              //scale: 1.0,
+                                              fit: BoxFit.cover,
+                                            )),
+                                      ],
                                     ),
                                   ),
-                                );
-                              })),
+                                ),
+                              );
+                            },
+                            options: CarouselOptions(
+                                autoPlay: false,
+                                enlargeCenterPage: true,
+                                aspectRatio: 2.0,
+                                viewportFraction: 0.9),
+                          ),
+                    SizedBox(
+                      height: 15,
                     ),
                     Expanded(
                       child: ListView.builder(
@@ -141,47 +207,40 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   Container topBar(BuildContext context, TabController controller) {
     return Container(
-      height: MediaQuery.of(context).size.height / 9,
+      height: MediaQuery.of(context).size.height / 11,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.pink,
-        // borderRadius: BorderRadius.only(
-        //     bottomLeft: Radius.circular(20),
-        //     bottomRight: Radius.circular(20))
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Row(children: <Widget>[
           Expanded(
-            child: Material(
-                //  elevation: 5.0,
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Friends'),
-                      // SizedBox(
-                      //   width: 10,
-                      // ),
-                      Icon(Iconsax.arrow_down_1)
-                    ],
-                  ),
-                )),
+            child: GestureDetector(
+              onTap: () {
+                // bottomSheet2(context, controller);
+                toggleTopSheet();
+              },
+              child: Material(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Friends'),
+                        // SizedBox(
+                        //   width: 10,
+                        // ),
+                        Icon(Iconsax.arrow_down_1)
+                      ],
+                    ),
+                  )),
+            ),
           ),
           SizedBox(
             width: 15,
           ),
-          Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.white.withOpacity(0.5)),
-              child: IconButton(
-                  onPressed: () {
-                    bottomSheet2(context, controller);
-                  },
-                  icon: Icon(Icons.qr_code_rounded)))
         ]),
       ),
     );
@@ -353,10 +412,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  PersistentBottomSheetController<void> bottomSheet() {
-    return showBottomSheet<void>(
+  bottomSheet() {
+    return showModalBottomSheet<void>(
         backgroundColor: Colors.white,
         enableDrag: true,
+        showDragHandle: true,
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
@@ -420,25 +480,25 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           )
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              // borderRadius:
-                              //     BorderRadius.circular(10),
-                              shape: BoxShape.circle,
-                              color: Colors.grey.withOpacity(0.1)),
-                          child: IconButton(
-                            icon: Icon(
-                              Iconsax.close_square,
-                              color: Colors.pink,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                      )
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      //   child: Container(
+                      //     decoration: BoxDecoration(
+                      //         // borderRadius:
+                      //         //     BorderRadius.circular(10),
+                      //         shape: BoxShape.circle,
+                      //         color: Colors.grey.withOpacity(0.1)),
+                      //     child: IconButton(
+                      //       icon: Icon(
+                      //         Iconsax.close_square,
+                      //         color: Colors.pink,
+                      //       ),
+                      //       onPressed: () {
+                      //         Navigator.pop(context);
+                      //       },
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                   const Divider(
@@ -564,42 +624,63 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return showModalBottomSheet<void>(
         backgroundColor: Colors.white,
         context: context,
+        enableDrag: true,
+        showDragHandle: true,
+        useSafeArea: true,
         isScrollControlled: true,
         builder: (BuildContext context) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            //  mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width,
-                child: Column(children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'QUICK FILTERS',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  tabContainer(controller),
-                  Expanded(
-                      child: TabBarView(
-                    controller: controller,
-                    children: [
-                      friendsTab(),
-                      tabTwo(),
-                      tabThree(),
-                      tabFour(),
-                    ],
-                  ))
-                ]),
-              ),
-            ],
-          );
+          return topSheetColumn(context, controller);
         });
+  }
+
+  Column topSheetColumn(BuildContext context, TabController controller) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          height: 400,
+          width: MediaQuery.of(context).size.width,
+          child: Column(children: [
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'QUICK FILTERS',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            tabContainer(controller),
+            Expanded(
+                child: TabBarView(
+              controller: controller,
+              children: [
+                friendsTab(),
+                tabTwo(),
+                tabThree(),
+                tabFour(),
+              ],
+            )),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  isTopSheetOpen = false;
+                });
+              },
+              child: Text(
+                'Close',
+                style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+            )
+          ]),
+        ),
+      ],
+    );
   }
 
   Container tabThree() {

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:market/API/getData.dart';
 import 'package:market/UserProfile/page_view.dart';
+import 'package:market/UserProfile/top_sheet.dart';
 import 'package:market/screens/add_money.dart';
 import 'package:market/screens/home.dart';
 import 'package:market/screens/pinScreen/pin__screen.dart';
@@ -74,9 +75,7 @@ class _CustomBottomNavState extends State<CustomBottomNav>
     //  EditScreen(),
     UserProfile(),
 
-    Center(
-      child: Text('Senior mobile app developer'),
-    ),
+    MyTopSheet(),
   ];
 
   @override

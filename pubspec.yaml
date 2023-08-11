@@ -47,6 +47,7 @@ dependencies:
   animated_bottom_navigation_bar: ^1.2.0
   curved_labeled_navigation_bar: ^2.0.2
   top_modal_sheet: ^2.0.1
+  carousel_slider: ^4.2.1
   
  
   
@@ -80,6 +81,10 @@ flutter:
     - assets/nature.jpeg
     - assets/girl.jpg
     - assets/girltwo.jpg
+    - assets/planet.jpeg
+    - assets/besties.jpg
+    - assets/friend.jpg
+    - assets/love.jpg
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
