@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:market/API/getData.dart';
 import 'package:market/UserProfile/page_view.dart';
 import 'package:market/UserProfile/top_sheet.dart';
+import 'package:market/match/match_screen.dart';
 import 'package:market/screens/add_money.dart';
 import 'package:market/screens/home.dart';
 import 'package:market/screens/pinScreen/pin__screen.dart';
@@ -20,6 +21,7 @@ import '../UserProfile/profile.dart';
 import '../UserProfile/profile_three.dart';
 import '../UserProfile/profile_twwo.dart';
 import '../UserProfile/user_profile.dart';
+import '../match/crew.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -69,13 +71,13 @@ class _CustomBottomNavState extends State<CustomBottomNav>
     )
   ];
   static const List<Widget> _widgetOptions = [
+    MatchScreen(),
+    Crew(),
     Home(),
     Profile(),
-    ProfileThree(),
+
     //  EditScreen(),
     UserProfile(),
-
-    MyTopSheet(),
   ];
 
   @override

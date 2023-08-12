@@ -166,9 +166,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(20)),
                                             child: Image.asset(
-                                              'assets/girl.jpg',
-                                              // height: 50,
-                                              //scale: 1.0,
+                                              'assets/birds.jpg',
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  4.1,
+                                              width: 130,
+                                              scale: 1.0,
                                               fit: BoxFit.cover,
                                             )),
                                       ],
