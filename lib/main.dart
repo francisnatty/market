@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Montserrat',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        // textTheme: TextTheme()
       ),
       //  home: const CustomBottomNav(),
       initialRoute: 'navbar',

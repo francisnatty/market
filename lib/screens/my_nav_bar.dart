@@ -3,10 +3,15 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:market/API/country.dart';
 import 'package:market/API/getData.dart';
 import 'package:market/UserProfile/page_view.dart';
 import 'package:market/UserProfile/top_sheet.dart';
 import 'package:market/match/match_screen.dart';
+import 'package:market/registration_screens/dob.dart';
+import 'package:market/registration_screens/email.dart';
+import 'package:market/registration_screens/name.dart';
+import 'package:market/registration_screens/registration.dart';
 import 'package:market/screens/add_money.dart';
 import 'package:market/screens/home.dart';
 import 'package:market/screens/pinScreen/pin__screen.dart';
@@ -71,10 +76,10 @@ class _CustomBottomNavState extends State<CustomBottomNav>
     )
   ];
   static const List<Widget> _widgetOptions = [
-    MatchScreen(),
-    Crew(),
-    Home(),
-    Profile(),
+    Registration(),
+    EmailScreen(),
+    DOBScreen(),
+    WorldTimeApi(),
 
     //  EditScreen(),
     UserProfile(),

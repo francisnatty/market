@@ -107,6 +107,10 @@ flutter:
     - family: Victor
       fonts:
           - asset: assets/fonts/VictorMono-Bold.ttf
+    - family: MontserratBold
+      fonts:
+          - asset: assets/fonts/Montserrat-ExtraBold.ttf
+     
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
     # - family: Trajan Pro

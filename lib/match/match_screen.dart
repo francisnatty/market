@@ -14,6 +14,8 @@ class _MatchScreenState extends State<MatchScreen> {
   bool isCheckBoxOpen1 = false;
   bool isCheckBoxOpen2 = false;
   bool isCheckboxOpen3 = false;
+  bool isPopUpOpen = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,188 +35,204 @@ class _MatchScreenState extends State<MatchScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        // border: Border.fromBorderSide(
-                        //     BorderSide(color: Colors.pink, width: 2))
-                      ),
-                      padding: EdgeInsets.all(8.0),
-                      height: MediaQuery.of(context).size.height / 10,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  child: SizedBox(
-                                    height: 70,
-                                    width: 70,
-                                    child: CircleAvatar(
-                                      radius: 48,
-                                      backgroundImage:
-                                          AssetImage('assets/girl.jpg'),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 5),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text('Matching for'),
-                                    Text(
-                                      'Yourself',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ]),
-                          PopupMenuButton(
-                            color: Colors.white,
-                            icon: Icon(
-                              Icons.arrow_drop_down_circle_outlined,
-                              color: Colors.pink,
+                    child: isPopUpOpen
+                        ? SizedBox.shrink()
+                        : Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              // border: Border.fromBorderSide(
+                              //     BorderSide(color: Colors.pink, width: 2))
                             ),
-                            constraints: BoxConstraints(
-                                maxWidth: MediaQuery.of(context).size.width),
-                            itemBuilder: (context) => [
-                              PopupMenuItem(
-                                  child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Matching for?',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      icon: Icon(
-                                        Iconsax.close_square,
-                                        color: Colors.pink,
-                                      ))
-                                ],
-                              )),
-                              PopupMenuItem(
-                                // mouseCursor: Colors.purple,
-                                value: 1,
-                                child: popItem(context, 'YourSelf',
-                                    'assets/girl.jpg', isCheckBoxOpen1),
-                              ),
-                              // PopupMenuDivider();
-                              PopupMenuItem(
-                                child: popItem(context, 'Lauren',
-                                    'assets/girltwo.jpg', isCheckBoxOpen2),
-                                value: 2,
-                              ),
-                              PopupMenuItem(
-                                child: popItem(context, 'Philip',
-                                    'assets/dark.jpeg', isCheckboxOpen3),
-                                value: 3,
-                              ),
-                              PopupMenuItem(
-                                  child: SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(8, 5, 8, 5),
-                                  decoration: BoxDecoration(
-                                      // borderRadius: BorderRadius.circular(20),
-                                      // color: Colors.pink.withOpacity(0.1)
-                                      ),
-                                  child: Column(
+                            padding: EdgeInsets.all(8.0),
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Row(
+                                      Container(
+                                        child: SizedBox(
+                                          height: 70,
+                                          width: 70,
+                                          child: CircleAvatar(
+                                            radius: 48,
+                                            backgroundImage:
+                                                AssetImage('assets/girl.jpg'),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.start,
                                         children: [
-                                          Row(children: [
-                                            SizedBox(
-                                              height: 50,
-                                              width: 50,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    border:
-                                                        Border.fromBorderSide(
-                                                            BorderSide(
-                                                                color: Colors
-                                                                    .pink))),
-                                                child: Icon(
-                                                  Iconsax.profile_add,
-                                                  color: Colors.pink,
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Set Your',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  'Friends up',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ],
-                                            ),
-                                          ]),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                3,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(30),
-                                                color: Colors.black87),
-                                            child: TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                'Invite',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          )
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text('Matching for'),
+                                          Text(
+                                            'Yourself',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18),
+                                          ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      const Divider(
-                                        thickness: 0.5,
-                                      ),
-                                    ],
+                                    ]),
+                                PopupMenuButton(
+                                  color: Colors.white,
+                                  icon: Icon(
+                                    Icons.arrow_drop_down_circle_outlined,
+                                    color: Colors.pink,
                                   ),
+                                  constraints: BoxConstraints(
+                                      maxWidth:
+                                          MediaQuery.of(context).size.width),
+                                  itemBuilder: (context) => [
+                                    PopupMenuItem(
+                                        child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Matching for?',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        IconButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            icon: Icon(
+                                              Iconsax.close_square,
+                                              color: Colors.pink,
+                                            ))
+                                      ],
+                                    )),
+                                    PopupMenuItem(
+                                      // mouseCursor: Colors.purple,
+                                      value: 1,
+                                      child: popItem(context, 'YourSelf',
+                                          'assets/girl.jpg', isCheckBoxOpen1),
+                                    ),
+                                    // PopupMenuDivider();
+                                    PopupMenuItem(
+                                      child: popItem(
+                                          context,
+                                          'Lauren',
+                                          'assets/girltwo.jpg',
+                                          isCheckBoxOpen2),
+                                      value: 2,
+                                    ),
+                                    PopupMenuItem(
+                                      child: popItem(context, 'Philip',
+                                          'assets/dark.jpeg', isCheckboxOpen3),
+                                      value: 3,
+                                    ),
+                                    PopupMenuItem(
+                                        child: SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(8, 5, 8, 5),
+                                        decoration: BoxDecoration(
+                                            // borderRadius: BorderRadius.circular(20),
+                                            // color: Colors.pink.withOpacity(0.1)
+                                            ),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(children: [
+                                                  SizedBox(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          border: Border
+                                                              .fromBorderSide(
+                                                                  BorderSide(
+                                                                      color: Colors
+                                                                          .pink))),
+                                                      child: Icon(
+                                                        Iconsax.profile_add,
+                                                        color: Colors.pink,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Set Your',
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      Text(
+                                                        'Friends up',
+                                                        style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ]),
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      3,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      color: Colors.black87),
+                                                  child: TextButton(
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      'Invite',
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            const Divider(
+                                              thickness: 0.5,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ))
+                                  ],
                                 ),
-                              ))
-                            ],
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                    ),
                   ),
                   Stack(
                     children: [
@@ -363,7 +381,7 @@ class _MatchScreenState extends State<MatchScreen> {
                 Checkbox(
                     activeColor: Colors.pink,
                     // checkColor: Colors.pink,
-                    value: isCheckBoxOpen1,
+                    value: checkValue,
                     onChanged: (value) {
                       setState(() {
                         checkValue = value!;
