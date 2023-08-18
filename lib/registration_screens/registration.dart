@@ -5,7 +5,6 @@ import 'package:market/registration_screens/gender.dart';
 import 'package:market/registration_screens/landing.dart';
 import 'package:market/registration_screens/name.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:market/screens/pinScreen/pin__screen.dart';
 
 import 'dob.dart';
 
