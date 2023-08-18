@@ -74,7 +74,9 @@ class _CustomBottomNavState extends State<CustomBottomNav>
   static const List<Widget> _widgetOptions = [
     Home(),
     Registration(),
-    UserProfile(),
+    Profile(),
+    Profile(),
+    Profile(),
   ];
 
   @override
