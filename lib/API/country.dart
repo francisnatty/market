@@ -48,14 +48,18 @@ class _WorldTimeApiState extends State<WorldTimeApi> {
               return ListView.builder(
                   itemCount: country.length,
                   itemBuilder: (context, index) {
-                    final StateModel states = country[index].states;
+                    List<StateModel> states = country[index].states;
                     return ListTile(
                       title: Text(country[index].name),
                       leading: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         onPressed: () {},
                       ),
-                      subtitle: Text(states.name),
+                      subtitle: Text('states'),
+                      trailing: IconButton(
+                        icon: Icon(Icons.forward),
+                        onPressed: () {},
+                      ),
                     );
                   });
             } else if (snapshot.hasError) {
@@ -71,9 +75,8 @@ class ApiModel {
   final String name;
   final String countryCode;
   final String region;
-  final StateModel states;
+  final List<StateModel> states;
   //final List<>
-
   const ApiModel(
       {required this.name,
       required this.countryCode,

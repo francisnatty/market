@@ -48,6 +48,7 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2
   top_modal_sheet: ^2.0.1
   carousel_slider: ^4.2.1
+  font_awesome_flutter: ^10.5.0
   
  
   
@@ -86,6 +87,14 @@ flutter:
     - assets/friend.jpg
     - assets/love.jpg
     - assets/birds.jpg
+    - assets/age.jpg
+    - assets/email.jpg
+    - assets/email2.jpg
+    - assets/gender.webp
+    - assets/see.webp
+    - assets/dating.webp
+    - assets/check.webp
+    
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Gender extends StatefulWidget {
-  const Gender({super.key});
+  final PageController controller;
+  const Gender({super.key, required this.controller});
 
   @override
   State<Gender> createState() => _GenderState();
@@ -22,6 +24,15 @@ class _GenderState extends State<Gender> {
           Align(
             alignment: Alignment.center,
             child: Column(children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/gender.webp'))),
+              ),
+              SizedBox(
+                height: 15,
+              ),
               Text(
                 'What\s your gender?',
                 style: TextStyle(
@@ -30,7 +41,7 @@ class _GenderState extends State<Gender> {
                     fontFamily: 'MontserratBold'),
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Text(
                 'You can only add your gender once,you cannot change it later',
@@ -88,6 +99,42 @@ class _GenderState extends State<Gender> {
                 ],
               )
             ]),
+          ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            left: 0,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.circleArrowLeft,
+                        size: 40,
+                        color: Colors.pink,
+                      ),
+                      onPressed: () {
+                        widget.controller.previousPage(
+                            duration: const Duration(milliseconds: 350),
+                            curve: Curves.bounceIn);
+                      },
+                    ),
+                    // Indicator(isActive: isActive)
+                    IconButton(
+                        onPressed: () {
+                          widget.controller.nextPage(
+                              duration: const Duration(milliseconds: 350),
+                              curve: Curves.bounceIn);
+                        },
+                        icon: Icon(
+                          FontAwesomeIcons.circleArrowRight,
+                          size: 40,
+                          color: Colors.pink,
+                        ))
+                  ]),
+            ),
           )
         ]),
       )),

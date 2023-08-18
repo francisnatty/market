@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 
 class NameScreen extends StatefulWidget {
-  const NameScreen({super.key});
+  final PageController controller;
+  const NameScreen({super.key, required this.controller});
 
   @override
   State<NameScreen> createState() => _NameScreenState();
@@ -80,7 +82,43 @@ class _NameScreenState extends State<NameScreen> {
                   },
                 ),
               ),
-            )
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              left: 0,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.circleArrowLeft,
+                          size: 40,
+                          color: Colors.pink,
+                        ),
+                        onPressed: () {
+                          widget.controller.previousPage(
+                              duration: const Duration(milliseconds: 350),
+                              curve: Curves.bounceIn);
+                        },
+                      ),
+                      // Indicator(isActive: isActive)
+                      IconButton(
+                          onPressed: () {
+                            widget.controller.nextPage(
+                                duration: const Duration(milliseconds: 350),
+                                curve: Curves.bounceIn);
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.circleArrowRight,
+                            size: 40,
+                            color: Colors.pink,
+                          ))
+                    ]),
+              ),
+            ),
           ])),
         ),
       ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:market/API/country.dart';
 import 'package:market/UserProfile/edit.dart';
+import 'package:market/registration_screens/landing.dart';
+import 'package:market/registration_screens/registration.dart';
 import 'package:market/screens/home.dart';
 import 'package:market/screens/my_nav_bar.dart';
 
@@ -26,11 +29,14 @@ class MyApp extends StatelessWidget {
         // textTheme: TextTheme()
       ),
       //  home: const CustomBottomNav(),
-      initialRoute: 'navbar',
+      initialRoute: 'api',
 
       routes: {
         'navbar': (context) => CustomBottomNav(),
         'edit': (context) => EditScreen(),
+        'register': (context) => Registration(),
+        'landing': (context) => Landing(),
+        'api': (context) => WorldTimeApi(),
       },
     );
   }

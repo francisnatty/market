@@ -77,11 +77,10 @@ class _CustomBottomNavState extends State<CustomBottomNav>
   ];
   static const List<Widget> _widgetOptions = [
     Registration(),
-    EmailScreen(),
-    DOBScreen(),
+    // EmailScreen(),
     WorldTimeApi(),
-
-    //  EditScreen(),
+    WorldTimeApi(),
+    EditScreen(),
     UserProfile(),
   ];
 
